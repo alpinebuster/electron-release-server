@@ -68,6 +68,10 @@ server {
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+        proxy_http_version 1.1; # WebSocket requires the HTTP/1.1 protocol.
+        proxy_set_header Upgrade $http_upgrade; # This is to upgrade the connection to WebSocket.
+        proxy_set_header Connection "upgrade"; # Allows the connection upgrade (required).
     }
 }
 ```

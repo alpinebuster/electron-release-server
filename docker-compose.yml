@@ -1,41 +1,49 @@
-version: '2'
 services:
   web:
     build: .
-    environment:
-      WEBSITE_TITLE: 'Download AI Stomatology'
-      WEBSITE_HOME_CONTENT: 'Hi there 👋'
-      WEBSITE_NAV_LOGO: ''
-      WEBSITE_APP_TITLE: 'AI Stomatology'
-      APP_USERNAME: username
-      APP_PASSWORD: password
-      DB_HOST: db
-      DB_PORT: 5432
-      DB_USERNAME: releaseserver
-      DB_NAME: releaseserver
-      DB_PASSWORD: secret
-      # DEKs should be 32 bytes long, and cryptographically random.
-      # You can generate such a key by running the following:
-      #   require('crypto').randomBytes(32).toString('base64')
-      # PLEASE ENSURE THAT YOU CHANGE THIS VALUE IN PRODUCTION
-      DATA_ENCRYPTION_KEY: oIh0YgyxQbShuMjw4/laYcZnGKzvC3UniWFsqL0t4Zs=
-      # Recommended: 63 random alpha-numeric characters
-      # Generate using: https://www.grc.com/passwords.htm
-      TOKEN_SECRET: change_me_in_production
-      APP_URL: 'localhost:8080'
-      ASSETS_PATH: '/usr/src/electron-release-server/releases'
+    env_file:
+      - .env
+    image: zzz/as-release-server:latest
+    pull_policy: never
     depends_on:
       - db
     ports:
       - '9080:80'
+    container_name: as-release-server
+    environment:
+      WEBSITE_TITLE: ${WEBSITE_TITLE}
+      WEBSITE_HOME_CONTENT: ${WEBSITE_HOME_CONTENT}
+      WEBSITE_NAV_LOGO: ${WEBSITE_NAV_LOGO}
+      WEBSITE_APP_TITLE: ${WEBSITE_APP_TITLE}
+      APP_USERNAME: ${APP_USERNAME}
+      APP_PASSWORD: ${APP_PASSWORD}
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: ${DB_NAME}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      # DEKs should be 32 bytes long, and cryptographically random.
+      # You can generate such a key by running the following:
+      #   `require('crypto').randomBytes(32).toString('base64')`
+      # PLEASE ENSURE THAT YOU CHANGE THIS VALUE IN PRODUCTION
+      DATA_ENCRYPTION_KEY: ${DATA_ENCRYPTION_KEY}
+      # Recommended: 63 random alpha-numeric characters
+      # Generate using: `https://www.grc.com/passwords.htm`
+      TOKEN_SECRET: ${TOKEN_SECRET}
+      APP_URL: 'localhost:8080'
+      ASSETS_PATH: '/usr/src/electron-release-server/releases'
     entrypoint: ./scripts/wait.sh db:5432 -- npm start
     volumes:
       - ./releases:/usr/src/electron-release-server/releases
   db:
     image: postgres:11
+    container_name: as-release-server-db
+    env_file:
+      - .env
     environment:
-      POSTGRES_PASSWORD: secret
-      POSTGRES_USER: releaseserver
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
     volumes:
       - postgres:/var/lib/postgresql/data
 
