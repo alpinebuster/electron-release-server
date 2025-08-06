@@ -3,6 +3,7 @@ services:
     build: .
     env_file:
       - .env
+    image: zzz/as-release-server:latest
     pull_policy: never
     depends_on:
       - db

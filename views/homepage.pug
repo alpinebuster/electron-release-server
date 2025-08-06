@@ -3,8 +3,8 @@ html
   head
     meta(charset='utf-8')
     title #{process.env.WEBSITE_TITLE || 'Awesome Electron Desktop App'}
-    meta(name='description', content='Download the interactive app for doing whatever it does.')
-    meta(name='author', content='Arek Sredzki')
+    meta(name='description', content='Download the app.')
+    meta(name='author', content='alpinebuster')
     meta(name='viewport', content='width=device-width, initial-scale=1')
     base(href="/")
 
@@ -14,7 +14,7 @@ html
     // endbower
 
     // STYLES
-    link(rel="stylesheet", href="/styles/importer.css")
+    link(rel="stylesheet", href="/styles/importer.css", id="dark-theme")
     // STYLES END
   body(ng-app='app', ng-controller='MainController as main')
     .header
