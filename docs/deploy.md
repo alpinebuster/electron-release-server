@@ -64,6 +64,10 @@ server {
     server_name web01.alpinebuster.top;
 
     client_max_body_size 900M;
+    proxy_connect_timeout 1800s; # the timeout for establishing a connection from the client to the upstream server
+    proxy_send_timeout 1800s; # the timeout for sending the request body to the upstream server
+    proxy_read_timeout 1800s; # the timeout for waiting to receive a response from the upstream server
+    proxy_request_buffering off; # disables request buffering, suitable for streaming large file uploads without buffering on the proxy
 
     location / {
         proxy_pass http://127.0.0.1:8080;
