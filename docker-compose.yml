@@ -31,10 +31,10 @@ services:
       # Generate using: `https://www.grc.com/passwords.htm`
       TOKEN_SECRET: ${TOKEN_SECRET}
       APP_URL: 'localhost:8080'
-      ASSETS_PATH: '/usr/src/electron-release-server/releases'
+      ASSETS_PATH: '/usr/src/as-release-server/releases'
     entrypoint: ./scripts/wait.sh db:5432 -- npm start
     volumes:
-      - ./releases:/usr/src/electron-release-server/releases
+      - ./releases:/usr/src/as-release-server/releases
   db:
     image: postgres:11
     container_name: as-release-server-db

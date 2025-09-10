@@ -1,7 +1,7 @@
 {
   "name": "electron-release-server",
   "private": true,
-  "version": "3.0.3",
+  "version": "1.4.5",
   "description": "A version server for hosting and serving the electron desktop app releases.",
   "main": "app.js",
   "author": {

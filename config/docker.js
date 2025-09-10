@@ -44,6 +44,9 @@ module.exports = {
     token_secret: process.env['TOKEN_SECRET'],
   },
   files: {
+    // Maximum allowed file size in bytes
+    // Defaults to 500MB * 10
+    maxBytes: 5242880000,
     dirname: process.env['ASSETS_PATH'] || '/tmp/',
   },
   session: {
@@ -55,6 +58,10 @@ module.exports = {
     user: process.env['DB_USERNAME'] || process.env['DATABASE_URL'] && process.env['DATABASE_URL'].split('@')[0].split(':')[1].split('/')[2],
     password: process.env['DB_PASSWORD'] || process.env['DATABASE_URL'] && process.env['DATABASE_URL'].split('@')[0].split(':')[2],
     port: process.env['DB_PORT'] || process.env['DATABASE_URL'] && process.env['DATABASE_URL'].split('@')[1].split(':')[1].split('/')[0]
-  }
+  },
+  i18n: {
+    locales: ['en', 'zh'],
+    defaultLocale: 'en',
+  },
 
 };

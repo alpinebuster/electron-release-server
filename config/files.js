@@ -4,8 +4,8 @@
  */
 module.exports.files = {
   // Maximum allowed file size in bytes
-  // Defaults to 500MB
-  maxBytes: 524288000,
+  // Defaults to 500MB * 10
+  maxBytes: 5242880000,
   // The fs directory name at which files will be kept
   dirname: ''
 };

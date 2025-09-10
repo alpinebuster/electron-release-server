@@ -1,7 +1,5 @@
 # Electron Release Server
-[![GitHub stars](https://img.shields.io/github/stars/ArekSredzki/electron-release-server.svg)](https://github.com/ArekSredzki/electron-release-server/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/ArekSredzki/electron-release-server.svg)](https://github.com/ArekSredzki/electron-release-server/network)
-[![Join the chat at https://gitter.im/ArekSredzki/electron-release-server](https://badges.gitter.im/ArekSredzki/electron-release-server.svg)](https://gitter.im/ArekSredzki/electron-release-server?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 >A node web server which serves & manages releases of your [Electron](http://electron.atom.io) App, and is fully compatible with [Squirrel](https://github.com/Squirrel) Auto-updater (which is built into Electron).
 
 [![Electron Release Server Demo](https://j.gifs.com/wpyY1X.gif)](https://youtu.be/lvT7rfB01iA)
@@ -13,7 +11,7 @@ If you host your project on your Github **and** do not need a UI for your app, t
 ## Advisory Notices
 **IMPORTANT:**
 - Version `2.0.0` updates many packages, most importantly to SailsJS 1.x.x. At a bare minimum, you must rename `connections` to `datastores` in your `config/local.js` file. You may need to make further changes depending on how significantly you have customized the project.
-- The release of Angular `1.6.0` has broken all `electron-release-server` versions prior to `1.4.2`. Please use the instructions under the `Maintenance` heading below to update your fork! Sorry for the inconvenience.
+- The release of Angular `1.6.0` has broken all `as-release-server` versions prior to `1.4.2`. Please use the instructions under the `Maintenance` heading below to update your fork! Sorry for the inconvenience.
 - Since release `1.5.0` several models have changed to accommodate new features. Please use the instructions under [Migration](docs/database.md#migration) to update your database! Sorry for the inconvenience.
 
 ## Features
