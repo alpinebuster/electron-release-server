@@ -30,7 +30,7 @@ services:
       # Recommended: 63 random alpha-numeric characters
       # Generate using: `https://www.grc.com/passwords.htm`
       TOKEN_SECRET: ${TOKEN_SECRET}
-      APP_URL: 'localhost:8080'
+      APP_URL: ${APP_URL}
       ASSETS_PATH: '/usr/src/as-release-server/releases'
     entrypoint: ./scripts/wait.sh db:5432 -- npm start
     volumes:
