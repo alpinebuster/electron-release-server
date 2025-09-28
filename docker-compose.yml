@@ -5,6 +5,7 @@ services:
       - .env
     image: zzz/as-release-server:latest
     pull_policy: never
+    restart: unless-stopped
     depends_on:
       - db
     ports:
@@ -38,6 +39,7 @@ services:
   db:
     image: postgres:11
     container_name: as-release-server-db
+    restart: unless-stopped
     env_file:
       - .env
     environment:
